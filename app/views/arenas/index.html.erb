@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Arenas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @arenas.each do |arena| %>
+      <tr>
+        <td><%= arena.id %></td>
+        <td><%= arena.character_1.name %></td>
+        <td><%= arena.character_2.name %></td>
+        <td><%= link_to 'Show', arena %></td>
+        <td><%= link_to 'Edit', edit_arena_path(arena) %></td>
+        <td><%= link_to 'Destroy', arena, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Start fight', start_fight_path(arena) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Arena', new_arena_path %>
