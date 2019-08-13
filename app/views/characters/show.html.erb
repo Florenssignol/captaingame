@@ -20,5 +20,10 @@
   <%= @character.description %>
 </p>
 
+<p>
+  <strong>Avatar:</strong>
+  <img src="<%= url_for(@character.avatar) %>" />
+</p>
+
 <%= link_to 'Edit', edit_character_path(@character) %> |
 <%= link_to 'Back', characters_path %>
