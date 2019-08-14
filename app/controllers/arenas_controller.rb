@@ -1,5 +1,11 @@
 class ArenasController < ApplicationController
   before_action :set_arena, only: [:show, :edit, :update, :destroy, :fight]
+  # before_action :init
+
+  # def init 
+  #   @life_left_character_1 = 1
+  #   @life_left_character_2 
+  # end
 
   # GET /arenas
   # GET /arenas.json
@@ -10,6 +16,7 @@ class ArenasController < ApplicationController
   # GET /arenas/1
   # GET /arenas/1.json
   def show
+    @winner
   end
 
   # GET /arenas/new
@@ -74,10 +81,28 @@ class ArenasController < ApplicationController
       end
       character_1_life -= @arena.character_2.attack
     end
-    logger.info character_1_life
+    # @life_left_character_1 = character_1_life
+    # @life_left_character_2 = character_2_life
     logger.info character_2_life
+    logger.info character_1_life
+
+    if character_1_life < character_2_life 
+      winner = @arena.character_2.name
+      @arena.character_2.victory += 1
+      @arena.character_1.defeat += 1
+      @arena.character_2.experience += 1
+      @arena.character_1.experience += 1
+    else 
+      winner = @arena.character_1.name 
+      @arena.character_1.victory += 1
+      @arena.character_2.defeat += 1
+      @arena.character_2.experience += 1
+      @arena.character_1.experience += 1
+    end
 
     redirect_to @arena, notice: 'Fight ended'
+
+    
   end
 
   private
