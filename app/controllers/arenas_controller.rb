@@ -68,42 +68,48 @@ class ArenasController < ApplicationController
   end
 
   def fight
-    character_2_life = @arena.character_2.life
-    character_1_life = @arena.character_1.life 
-    while character_1_life > 0 || character_2_life > 0
-      if character_1_life <= 0
-        break
+      character_2_life = @arena.character_2.life
+      character_1_life = @arena.character_1.life 
+      while character_1_life > 0 || character_2_life > 0
+        if character_1_life <= 0
+          break
+        end
+        character_2_life -= @arena.character_1.attack
+        if character_2_life <= 0  
+          break
+        end
+        character_1_life -= @arena.character_2.attack
       end
-      character_2_life -= @arena.character_1.attack
-      if character_2_life <= 0  
-        break
+      if character_1_life < character_2_life 
+        @winner = @arena.character_2
+        @loser = @arena.character_1
+        if @arena.fight_ended == false
+          @arena.character_1.update(
+            defeat: @arena.character_1.defeat + 1,
+            experience: @arena.character_1.experience + 1
+          )
+          @arena.character_2.update(
+            victory: @arena.character_2.victory + 1,
+            experience: @arena.character_2.victory + 1
+          )
+        end
+      else 
+        @winner = @arena.character_1 
+        @loser = @arena.character_2
+        if @arena.fight_ended == false
+          @arena.character_1.update(
+            victory: @arena.character_1.victory + 1,
+            experience: @arena.character_1.experience + 1
+          )
+          @arena.character_2.update(
+            defeat: @arena.character_2.defeat + 1, 
+            experience: @arena.character_2.experience + 1
+          )
       end
-      character_1_life -= @arena.character_2.attack
     end
-
-    if character_1_life < character_2_life 
-      @winner = @arena.character_2
-      @loser = @arena.character_1
-      @arena.character_1.update(
-        defeat: @arena.character_1.defeat + 1,
-        experience: @arena.character_1.experience + 1
-      )
-      @arena.character_2.update(
-        victory: @arena.character_2.victory + 1,
-        experience: @arena.character_2.victory + 1
-      )
-    else 
-      @winner = @arena.character_1 
-      @loser = @arena.character_2
-      @arena.character_1.update(
-        victory: @arena.character_1.victory + 1,
-        experience: @arena.character_1.experience + 1
-      )
-      @arena.character_2.update(
-        defeat: @arena.character_2.defeat + 1, 
-        experience: @arena.character_2.experience + 1
-      )
-    end
+    @arena.update(
+      fight_ended: true
+    )
   end
 
   private
