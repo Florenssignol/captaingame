@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 here is the recap of your Game: 
 <br>
+<p><%= @arena.historic.html_safe %></p>
 The winner is <%= @winner.name %>
 <p><%= @winner.name %> has now <%= @winner.victory %> victories and <%= @winner.experience %> points of experience</p>
 <p><%= @loser.name %> has now <%= @loser.defeat %> defeats and <%= @loser.experience %> points of experience </p>

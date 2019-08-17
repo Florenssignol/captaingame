@@ -70,15 +70,18 @@ class ArenasController < ApplicationController
   def fight
       character_2_life = @arena.character_2.life
       character_1_life = @arena.character_1.life 
+      @arena.historic = ""
       while character_1_life > 0 || character_2_life > 0
         if character_1_life <= 0
           break
         end
         character_2_life -= @arena.character_1.attack
+        @arena.historic += "#{@arena.character_2.name} n'a plus que #{character_2_life} points de vie <br>" 
         if character_2_life <= 0  
           break
         end
         character_1_life -= @arena.character_2.attack
+        @arena.historic += "#{@arena.character_1.name} n'a plus que #{character_1_life} points de vie <br>" 
       end
       if character_1_life < character_2_life 
         @winner = @arena.character_2
@@ -92,7 +95,7 @@ class ArenasController < ApplicationController
             victory: @arena.character_2.victory + 1,
             experience: @arena.character_2.victory + 1
           )
-        end
+        end 
       else 
         @winner = @arena.character_1 
         @loser = @arena.character_2
@@ -107,6 +110,7 @@ class ArenasController < ApplicationController
           )
       end
     end
+    @arena.save!
     @arena.update(
       fight_ended: true
     )

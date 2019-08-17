@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_15_155245) do
+ActiveRecord::Schema.define(version: 2019_08_16_070708) do
 
   create_table "accessories", force: :cascade do |t|
     t.string "name"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2019_08_15_155245) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "fight_ended", default: false
+    t.text "historic"
     t.index ["character_1_id"], name: "index_arenas_on_character_1_id"
     t.index ["character_2_id"], name: "index_arenas_on_character_2_id"
   end
