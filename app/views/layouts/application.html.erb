@@ -12,15 +12,12 @@
 
   <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">Captain Game</a>
+      <%= link_to "Captain Game", root_path, class: "navbar-brand"%>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <%= link_to "Home", root_path, class: "nav-link"%>
-          </li>
           <li class="nav-item">
             <%= link_to "Arenas", arenas_path, class: "nav-link"%>
           </li>
