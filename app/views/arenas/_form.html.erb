@@ -12,7 +12,10 @@
   <% end %>
 
   <%= form.collection_select(:character_1_id, Character.all, :id, :name) %>
+  <%= form.collection_select(:character_1_weapon_id, Accessory.all, :id, :name) %>
+  <br>
   <%= form.collection_select(:character_2_id, Character.all, :id, :name) %>
+  <%= form.collection_select(:character_2_weapon_id, Accessory.all, :id, :name) %>
 
   <div class="actions">
     <%= form.submit %>

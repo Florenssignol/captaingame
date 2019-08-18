@@ -70,17 +70,22 @@ class ArenasController < ApplicationController
   def fight
       character_2_life = @arena.character_2.life
       character_1_life = @arena.character_1.life 
+      character_2_weapon = @arena.character_2_weapon
+      character_1_weapon = @arena.character_1_weapon
+      character_1_attack = @arena.character_1.attack + @arena.character_1_weapon.weapon
+      character_2_attack = @arena.character_2.attack + @arena.character_2_weapon.weapon
+
       @arena.historic = ""
       while character_1_life > 0 || character_2_life > 0
         if character_1_life <= 0
           break
         end
-        character_2_life -= @arena.character_1.attack
+        character_2_life -= character_1_attack
         @arena.historic += "#{@arena.character_2.name} n'a plus que #{character_2_life} points de vie <br>" 
         if character_2_life <= 0  
           break
         end
-        character_1_life -= @arena.character_2.attack
+        character_1_life -= character_2_attack
         @arena.historic += "#{@arena.character_1.name} n'a plus que #{character_1_life} points de vie <br>" 
       end
       if character_1_life < character_2_life 
@@ -124,6 +129,6 @@ class ArenasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def arena_params
-      params.require(:arena).permit(:character_1_id, :character_2_id)
+      params.require(:arena).permit(:character_1_id, :character_2_id, :character_1_weapon_id, :character_2_weapon_id)
     end
 end
