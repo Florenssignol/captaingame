@@ -21,8 +21,12 @@
 </p>
 
 <p>
+  <% if @character.avatar == true %>
   <strong>Avatar:</strong>
   <img src="<%= url_for(@character.avatar) %>" />
+  <% else %>
+  There is no avatar for this character
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_character_path(@character) %> |

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :accessories
   resources :arenas
   resources :characters
   #get 'static_pages/index'

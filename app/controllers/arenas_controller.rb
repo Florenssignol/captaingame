@@ -81,12 +81,12 @@ class ArenasController < ApplicationController
           break
         end
         character_2_life -= character_1_attack
-        @arena.historic += "#{@arena.character_2.name} n'a plus que #{character_2_life} points de vie <br>" 
+        @arena.historic += "#{@arena.character_2.name} has only #{character_2_life} points left <br>" 
         if character_2_life <= 0  
           break
         end
         character_1_life -= character_2_attack
-        @arena.historic += "#{@arena.character_1.name} n'a plus que #{character_1_life} points de vie <br>" 
+        @arena.historic += "#{@arena.character_1.name} has only #{character_1_life} points left <br>" 
       end
       if character_1_life < character_2_life 
         @winner = @arena.character_2

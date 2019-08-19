@@ -20,5 +20,6 @@
   <%= form.collection_select(:character_2_id, Character.all, :id, :name, {}, { class: "form-control"}) %>
   <%= form.label :character_2_weapon_id %>
   <%= form.collection_select(:character_2_weapon_id, Accessory.all, :id, :name, {}, { class: "form-control"}) %>
-  <%= form.submit class: "btn btn-primary"%>
+  <br>
+  <%= form.submit class: "btn btn-light"%>
 <% end %>
