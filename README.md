@@ -1,24 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Before starting the game, run "rake db:setup" to create the database and seeds it with values.
+Run your server (rails s) and go to your http://localhost:3000/.
+From here, you can either click on the link to start the game or take a look at the different pages. 
