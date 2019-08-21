@@ -116,6 +116,8 @@ class ArenasController < ApplicationController
       end
     end
     @arena.save!
+    @arena.character_1.update_stats
+    @arena.character_2.update_stats
     @arena.update(
       fight_ended: true
     )
