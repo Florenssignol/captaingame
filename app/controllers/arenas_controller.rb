@@ -33,7 +33,7 @@ class ArenasController < ApplicationController
     @arena = Arena.new(arena_params)
 
     respond_to do |format|
-      if @arena.save
+      if @arena.save!
         format.html { redirect_to @arena, notice: 'Arena was successfully created.' }
         format.json { render :show, status: :created, location: @arena }
       else

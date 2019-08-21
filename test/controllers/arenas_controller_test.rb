@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ArenasControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @arena = arenas(:one)
+    @arena = create(:arena)
   end
 
   test "should get index" do
@@ -17,7 +17,13 @@ class ArenasControllerTest < ActionDispatch::IntegrationTest
 
   test "should create arena" do
     assert_difference('Arena.count') do
-      post arenas_url, params: { arena: {  } }
+      post arenas_url, params: { arena: { 
+        character_1_id: create(:character, :zeus).id, 
+        character_2_id: create(:character, :athena).id, 
+        character_1_weapon_id: create(:accessory, :bow).id, 
+        character_2_weapon_id: create(:accessory, :shield).id, 
+        }
+      }
     end
 
     assert_redirected_to arena_url(Arena.last)
@@ -34,7 +40,13 @@ class ArenasControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update arena" do
-    patch arena_url(@arena), params: { arena: {  } }
+    patch arena_url(@arena), params: { arena: {
+      character_1_id: create(:character, :zeus).id, 
+      character_2_id: create(:character, :athena).id, 
+      character_1_weapon_id: create(:accessory, :bow).id, 
+      character_2_weapon_id: create(:accessory, :shield).id, 
+     } 
+    }
     assert_redirected_to arena_url(@arena)
   end
 

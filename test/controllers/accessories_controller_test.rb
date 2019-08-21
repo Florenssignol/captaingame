@@ -2,7 +2,7 @@ require 'test_helper'
 
 class AccessoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @accessory = accessories(:one)
+    @accessory = create(:accessory)
   end
 
   test "should get index" do
@@ -17,7 +17,7 @@ class AccessoriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create accessory" do
     assert_difference('Accessory.count') do
-      post accessories_url, params: { accessory: {  } }
+      post accessories_url, params: { accessory: attributes_for(:accessory, :bow) }
     end
 
     assert_redirected_to accessory_url(Accessory.last)
@@ -34,7 +34,9 @@ class AccessoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update accessory" do
-    patch accessory_url(@accessory), params: { accessory: {  } }
+    patch accessory_url(@accessory), params: { accessory: { 
+      name: 'toto'
+     } }
     assert_redirected_to accessory_url(@accessory)
   end
 

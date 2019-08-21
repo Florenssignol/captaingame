@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  weapon: 1
-  shields: 1
-
-two:
-  weapon: 1
-  shields: 1

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CharactersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @character = characters(:one)
+    @character = create(:character)
   end
 
   test "should get index" do
@@ -17,7 +17,7 @@ class CharactersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create character" do
     assert_difference('Character.count') do
-      post characters_url, params: { character: {  } }
+      post characters_url, params: { character: attributes_for(:character, :zeus) }
     end
 
     assert_redirected_to character_url(Character.last)
@@ -34,7 +34,9 @@ class CharactersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update character" do
-    patch character_url(@character), params: { character: {  } }
+    patch character_url(@character), params: { character: { 
+      name: 'toto'
+     } }
     assert_redirected_to character_url(@character)
   end
 
