@@ -59,6 +59,6 @@ class StartFight
       arena.update(
         fight_ended: true
       )
-      return @winner, @loser
+      return [@winner, @loser]
     end
 end
