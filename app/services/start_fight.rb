@@ -6,11 +6,9 @@ class StartFight
     end
 
     def call
-        character_2_life = arena.character_2.life
-        character_1_life = arena.character_1.life 
-        character_2_weapon = arena.character_2_weapon
-        character_1_weapon = arena.character_1_weapon
-        character_1_attack = arena.character_1.attack + arena.character_1_weapon.weapon
+        character_1_life = arena.character_1.life + arena.character_1_weapon.shield
+        character_2_life = arena.character_2.life + arena.character_2_weapon.shield
+        character_1_attack = arena.character_1.attack + arena.character_1_weapon.weapon 
         character_2_attack = arena.character_2.attack + arena.character_2_weapon.weapon
   
         arena.historic = ""

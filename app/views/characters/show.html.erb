@@ -21,7 +21,7 @@
 </p>
 
 <p>
-  <% if @character.avatar == true %>
+  <% if @character.avatar.attached? %>
   <strong>Avatar:</strong>
   <img src="<%= url_for(@character.avatar) %>" />
   <% else %>
