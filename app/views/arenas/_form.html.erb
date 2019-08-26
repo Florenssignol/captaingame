@@ -12,14 +12,30 @@
   <% end %>
   <div class="form-group">
   <%= form.label :character_1_id %>
-  <%= form.collection_select(:character_1_id, Character.all, :id, :name, {}, { class: "form-control"})  %>
+  <%= form.select(
+    :character_1_id,
+    Character.all.map { |character| ["#{character.name} (life: #{character.life} / Attack #{character.attack})", character.id] },
+    {},
+    { class: "form-control"})%>  
   <%= form.label :character_1_weapon_id %>
-  <%= form.collection_select(:character_1_weapon_id, Accessory.all, :id, :name, {}, { class: "form-control"}) %>
+  <%= form.select(
+    :character_1_weapon_id, 
+    Accessory.all.map { |accessory| ["#{accessory.name} (Attack: #{accessory.weapon} / Defense: #{accessory.shield})", accessory.id] }, 
+    {},
+    { class: "form-control"})%>
   </div>
   <%= form.label :character_2_id %>
-  <%= form.collection_select(:character_2_id, Character.all, :id, :name, {}, { class: "form-control"}) %>
+  <%= form.select(
+  :character_2_id,
+  Character.all.map { |character| ["#{character.name} (life: #{character.life} / Attack #{character.attack})", character.id] },
+  {},
+  { class: "form-control"})%>
   <%= form.label :character_2_weapon_id %>
-  <%= form.collection_select(:character_2_weapon_id, Accessory.all, :id, :name, {}, { class: "form-control"}) %>
+  <%= form.select(
+  :character_2_weapon_id,
+  Accessory.all.map { |accessory| ["#{accessory.name} (Attack: #{accessory.weapon} / Defense #{accessory.shield})", accessory.id] },
+  {},
+  { class: "form-control"})%>
   <br>
   <%= form.submit class: "btn btn-light"%>
 <% end %>
